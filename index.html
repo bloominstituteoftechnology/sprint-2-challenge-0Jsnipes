@@ -5,29 +5,91 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(profile, reason) {
-
-    }
-
-    // 👉 CHALLENGE 2
+    function profileActivation(profile, reason)  {
+      if (profile.active){
+        if(reason){
+        profile.active=false
+        profile.reason=reason
+      }else{
+        return 'confirm status manually'
+      }
+    }else{
+      profile.active=true;
+      delete profile.reason;
+    } return profile;
+  }
+  
+      // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+         if (x>3||y>3||x<0||y<0){
+  
+         return 'invalid coordinates'
+    }const square = grid[y - 1][x - 1];
 
+if (square === "🟥") {
+  return "🟥 💀";
+} else if (square === "🟦") {
+  return "🟦 🥳";
+} else{
+return 'invalid coordinates'
     }
+  }
+    
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+      const result = {};
 
+  for (const key in obj) {
+    
+    if (key.length > 9) {
+      return "shorten all prop names to 9 chars or less";
     }
+
+        if (obj[key] === null) {
+    continue; 
+    }
+
+    const changed = obj[key] === 1 ? true : obj[key] === 0 ? false : obj[key];
+
+    result[key] = changed;
+  }
+
+  return result;
+}
+
+
+    
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (!text || forbidden.length === 0) {
+    return text; 
+  }
+   const scrubbedText = text.split(/\s+/).map(word => {
+        const cleanWord = word.replace(/[^\w]/g, '');
 
+        if (forbidden.includes(cleanWord.toLowerCase())) {
+    
+      return "x".repeat(cleanWord.length);
+    } else {
+      return word;
     }
+  });
+
+  return scrubbedText.join(" ");
+}
+
+    
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
-    }
+       {
+    return `(${num.slice(0, 3)}) ${num.slice(3, 6)}-${num.slice(6)}`;
+  
+  }
+}
+    
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
